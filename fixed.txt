@@ -1,0 +1,20 @@
+
+
+
+-------- Enable Pyzor, Razor2, DCC, SURBL (uribl)
+
+//For Razor2
+# iptables -I OUTPUT -p tcp --dport 2703 -j ACCEPT
+
+//For pyzor
+# iptables -I OUTPUT -p udp --dport 24441 -j ACCEPT
+# iptables -I INPUT -p tcp --dport 24441 -j ACCEPT
+
+
+
+---unofficial spamassassin rules
+cd /tmp
+wget http://yerp.org/rules/GPG.KEY
+sa-update --import GPG.KEY
+sa-update --gpgkey 6C6191E3 --channel sought.rules.yerp.org --channel updates.spamassassin.org
+
